@@ -68,6 +68,41 @@ ip address dhcp
 
 
 
-D1----------------------D2---------------------S2
+D1----------------------A1---------------------S1
+TELUS.COM 10.0.0.0/8
+chevronlan 350 agent
+350 = 9b
+Cov 32-9 = /23
+10.0.2.0 /23
+1st ip 10.0.2.1 /23
+last ip 10.0.3.255
+Not yours 10.0.4.0/23
 
+D1
+conf t
+ vlan 9
+ name Telus
+ exit
+ inter vlan 9
+ no shut
+ ip address 10.0.2.1 255.255.254.0
+ exit
+ ip dhcp excluded-add 10.0.2.1 10.0.2.100
+ ip dhcp pool Telus
+ NETWORK 10.0.2.0 255.255.254.0
+ DEFAULT-ROUTER  10.0.2.1
+exit
+
+A1
+conf t
+inter e0/0
+no shut
+switChport mode access
+switChport access vlan 9
+
+P1
+conf t
+int e0/0
+no shut 
+ip address dhcp
 
