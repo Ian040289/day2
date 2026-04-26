@@ -1,0 +1,73 @@
+
+D1-----------A1------------P1
+D1 
+ conf t
+ vlan 11
+ name 1500wfh
+ exit
+ inter vlan 11
+ no shut
+ ip address 172.16.8.1 255.255.248.0
+ exit
+ ip dhcp excleded-add 172.16.8.1 172.16.8.100
+ ip dhcp pool 1500WFH
+ NETWORK 172.16.8.0 255.255.248.0
+ DEFAULT-ROUTER  172.16.8.1
+ END
+
+----------
+
+A1
+conf t
+inter e0/0
+no shut
+ swithport access vlan 11
+
+------------
+
+P1
+conf t
+intr e0/0
+no shut 
+ip address dhcp
+
+
+
+
+D1--------------A2----------P2
+D1
+ conf t
+ vlan 14
+ name Accenture
+ exit
+ inter vlan 14
+ no shut
+ ip address 10.0.64.1 255.255.192.0
+ exit
+ ip dhcp excluded-add 10.0.64.1 10.0.64.100
+ ip dhcp pool Accenture
+ NETWORK 10.0.64.0 255.255.192.0
+ DEFAULT-ROUTER  10.0.64.1
+exit
+
+----------
+
+d2
+conf t
+inter e1/0
+no shut
+switChport mode access
+switChport access vlan 14
+------------
+
+s2
+conf t
+int e1/0
+no shut 
+ip address dhcp
+
+
+
+D1----------------------D2---------------------S2
+
+
