@@ -1,0 +1,99 @@
+IPV6
+
+8i4th	4i2nd	2i3rd	4i2nd	4i4th		
+0000	0000	0000	0000	0000
+0008	0400	0020	0001	0004
+0010	0800	0040	0002	0004
+0018	0c00	0060	0003	0008
+0020	1000	0080		000c
+0028	5000	00a0		0010
+0030	9000			0014
+0038 	d000
+
+
+task 2
+Subnet: 2001:fd8:2f2::/48 into 32 offices
+cai: convert , add, i figngerMO"
+add: /48 + /5=/53, 8isa2rnd
+
+2001:0fda:2f2:0
+
+
+
+
+task3
+subnet 2001:4455:9299::48 into 1024
+covert: 1024 =2r
+add 48 + 10= 58 4i3rd
+
+2001:4455:9299:0fc0::58
+01c0
+05c0
+09c0
+0bc0
+0fc0
+
+
+
+2001:fd8:750::48 subnet to 64
+
+48+6=/54 4i2rd                                 
+2001:fd8:750:0000::54
+2001:fd8:750:0400::54
+2001:fd8:750:0800::54
+2001:fd8:750:0c00::54
+2001:fd8:750:1000::54
+2001:fd8:750:1400::54
+2001:fd8:750:1800::54
+2001:fd8:750:1c00::54
+2001:fd8:750:2000::54
+2001:fd8:750:2400::54
+2001:fd8:750:2800::54
+2001:fd8:750:2c00::54
+
+
+R3
+sh ip in briesf |ex una
+show ip route connected 
+show ip route connected
+
+show ip route connected |in C
+
+10.1.1.4/30
+10.1.1.8/30
+172.16.50.5/20
+192.168.1.100/27
+
+ip route 10.1.1.4 255.255.255.252  null 0
+ip route 10.1.1.8 255.255.255.252  null 0
+ip route 172.16.48.0 255.255.240.0  null 0
+ip route 192.168.1.96 255.255.2255.224 null 0
+
+EIGRP: the best, most easy
+router eigrp 100
+network 10.1.1.4 0.0.0.3
+network 172.16.48.0 0.0.15.255
+network 192.168.96 0.0.0.31
+
+ospf:
+router ospf 1
+network 10.1.1.4 0.0.0.3 area 0
+network 172.16.48.0 0.0.15.255 area 0
+network 192.168.96 0.0.0.31 area 0
+
+
+
+
+R1:
+conf t
+router bgp 1
+bgp router -id 1.1.1.1
+neighbor 209.9.9.3 remote-as 3
+neighbor 207.7.7.2 remote-as 2
+neighbor 207.8.8.4 remote-as 45
+network 209.9.9.0 mask 255.255.255.0
+network 207.7.7.0 mask 255.255.255.0
+network 207.8.8.0 mask 255.255.255.0
+network 
+
+
