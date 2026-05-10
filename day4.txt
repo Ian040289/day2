@@ -1,0 +1,236 @@
+scan for all ip address of victim
+
+nmap -v 10.
+
+
+netstat -ano
+
+
+tco.flgas.syn==1
+
+
+
+netstat
+
+
+
+attack 130 and 455
+
+intial access
+net use \\10.k.1.10\ipc$
+
+
+privileeuse:
+
+net use x: /delete
+net use x: \\10.k.1.10\c$
+
+
+
+protocol hacker victim port
+
+
+**kali
+admin
+passs
+sudo su
+apt install openssh-server
+systemctl status enable
+systemctl start ssh
+ip addd
+
+
+firewall task 1
+
+config t
+NO ip access-list standard NOPORN
+ip access-list standard NOPORN
+DENY 66.254.0.0 0.0.255.255
+deny 161.49.0.0 0.0.255.255
+DENY 104.21.0.0 0.0.255.255
+DENY 68.235.0.0 0.0.255.255
+DENY 104.17.0.0 0.0.255.255
+DENY 88.208.0.0 0.0.255.255
+DENY 208.77.0.0 0.0.255.255
+DENY 172.67.0.0 0.0.255.255
+DENY 162.159.0.0 0.0.255.255
+Permit Any
+Int Gi 1
+ ip access-group NOPORN in
+end
+
+
+russian
+NO ip access-list standard NORUSSIA
+ip access-list standard NOPORN
+DENY 100.0.0.0 0.255.255.255
+DENY 101.0.0.0 0.255.255.255
+DENY 103.0.0.0 0.255.255.255
+DENY 109.0.0.0 0.255.255.255
+Permit Any
+Int Gi 1
+ ip access-group NOPORN in
+end
+
+
+skul
+conf t
+NO ip access-list standard NOISKUL
+ip access-list standard NOISKUL
+deny 172.16.0.0 0.0.255.255
+deny 104.22.0.0  0.0.255.255
+deny 50.6.0.0 0.0.255.255
+deny 184.168.0.0 0.0.255.255 
+deny 155.137.0.0  0.0.255.255
+deny 74.91.0.0 0.0.255.255
+Permit Any
+Int Gi 1
+ ip access-group NOISKUL in
+end
+
+conf t
+NO ip access-list standard TORRENTS
+ip access-list standard NOISKUL
+deny 162.159.0.0 0.0.255.255
+deny 172.67.0.0 0.0.255.255
+deny 76.223.0.0 0.0.255.255
+deny 104.21.0.0 0.0.255.255
+deny 104.26.0.0 0.0.255.255
+deny 95.211.0.0 0.0.255.255
+Permit Any
+Int Gi 1
+ ip access-group NOISKUL in
+end
+
+
+
+
+Config t
+NO IP access-list Extended NGFW1
+IP access-list Extended NGFW1
+ Permit tcp Any host bet10.com eq 80 log
+ Permit tcp Any host bet10.com eq 443 log
+ Permit icmp Any host bet10.com log
+ Permit tcp Any host bet11.com eq 53 log
+ Permit tcp Any host bet11.com eq 443 log
+ Permit tcp Any host bet11.com eq 22 log
+ Int Gi 3
+  ip access-group NGFW1 in
+REMOVE FIREWALL:
+CONfig t
+ Int Gi 3
+  NO ip access-group NGFW1 in
+end
+
+bet10.com dns ssh
+bet11.com http https
+
+
+
+Config t
+NO IP access-list Extended NGFW1
+IP access-list Extended NGFW1
+ Permit tcp Any host bet10.com eq 22 log
+ Permit tcp Any host bet10.com eq 53 log
+ Permit icmp Any host bet10.com log
+ Permit tcp Any host bet11.com eq 80 log
+ Permit tcp Any host bet11.com eq 443 log
+ Int Gi 3
+  ip access-group NGFW1 in
+
+
+
+
+game lab
+bet10.com
+allow only sccp, sip, h323 on bet10.com its a VOIPgw.
+allow only ssh, dns, http, https  on bet11.com its a VOIPgw.
+
+NO IP access-list Extended NGFW1
+IP access-list Extended NGFW1
+ Permit tcp Any host bet10.com eq 2000 log
+ Permit tcp Any host bet10.com eq 5060 log
+ Permit tcp Any host bet10.com eq 1720 log
+ Permit icmp Any host bet10.com log
+ Permit tcp Any host bet11.com eq 22 log
+ Permit tcp Any host bet11.com eq 53 log
+Permit tcp Any host bet11.com eq 80 log
+Permit tcp Any host bet11.com eq 443 log
+ Int Gi 3
+  ip access-group NGFW1 in
+end
+conf t
+ Int Gi 3
+  NO ip access-group NGFW1 in
+
+
+
+nxt lab4
+bet10.com
+allow only https on bet10.com its a VOIPgw.
+bet 11
+allow only https  on bet11.com its a VOIPgw.
+
+
+NO IP access-list Extended NGFW1
+IP access-list Extended NGFW1
+ Permit tcp Any host bet10.com eq 443 log
+ Permit tcp Any host bet11.com eq 443 log
+
+ Int Gi 3
+  ip access-group NGFW1 in
+
+lab 5
+bet10.com
+allow only telnet ssh http on bet10.com its a VOIPgw.
+bet 11
+allow only ssh https  on bet11.com its a VOIPgw.
+
+NO IP access-list Extended NGFW1
+IP access-list Extended NGFW1
+ Permit tcp Any host bet10.com eq 23 log
+ Permit tcp Any host bet10.com eq 22 log
+ Permit tcp Any host bet10.com eq 80 log
+ Permit tcp Any host bet11.com eq 22 log
+ Permit tcp Any host bet11.com eq 443 log
+
+
+ Int Gi 3
+  ip access-group NGFW1 in
+
+conf t
+ Int Gi 3
+  NO ip access-group NGFW1 in
+
+
+
+
+how to fix password
+step 1
+conf t
+line vty 0 14
+login local 
+exec-timeout 0 0
+
+
+
+------------docker----------------
+
+import cli
+
+cmd2 = '''hostname MATCHLATE
+int loop 7
+ip add 7.7.7.7 255.255.255.255
+int loop 8
+ip add 8.8.8.8 255.255.255.255
+int loop 9
+ip add 9.9.9.9 255.255.255.255
+end
+'''
+cli.configurep(cmd2)
+
+
+
+
+
+
